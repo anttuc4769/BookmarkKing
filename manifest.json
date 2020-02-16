@@ -2,21 +2,11 @@
   "name": "Bookmark King",
   "version": "1.0",
   "description": "Start Bookmarking like a KING",
-  "permissions": [ "bookmarks", "tabs", "cookies", "http://*/*", "https://*/*" ],
+  "permissions": [ "bookmarks", "activeTab", "cookies", "https://*.restdb.io/*", "https://www.vikyn.io/*" ],
   "browser_action": {
     "default_icon": "icon.png",
     "default_popup": "bookmarkKing.html"
   },
-  "content_scripts": [
-    {
-      "matches": [
-        "<all_urls>"
-      ],
-      "js": [
-        "js/jquery.min.js"
-      ]
-    }
-  ],
   "background": {
     "scripts": [ "js/jquery.min.js", "js/background.js" ],
     "persistent": false
