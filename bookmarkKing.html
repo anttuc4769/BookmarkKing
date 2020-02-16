@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html style="min-width: 225px; max-width: 225px; max-height: 60%; overflow: scroll">
+<body style="text-align: center;">
+    <img src="settingIcon.png" style="height: 22px; float: right; cursor: pointer;" id="icon_9D4E63B77101" />
+    <h1>Bookmark King</h1>
+    <div>
+        <label id="label_D3396C7B4D98"></label>
+        <div id="div_EA761612MN6D" style="display: block;">
+            <div id="div_YSA90ASAD">
+                <label style="display: none; color: red;" id="label_D09SAC7LOXP98">Missing Db Url. Click the gear to add.</label>
+                <label style="display: none; color: red;" id="label_D3396C7LOXP98">Missing Db API Key. Click the gear to add.</label>
+            </div>
+            <label style="font-weight: 600; font-size: 15px;">Keywords</label>
+            <textarea type="text" id="keyword_input_9D4E63B7711C" style="width: 100%; resize: none; height: fit-content; min-height: 36px;" placeholder="Required"></textarea>
+            <label style="font-weight: 600; font-size: 15px;">Name</label>
+            <input type="text" id="name_input_9D4E69KA711C" style="width: 100%;" placeholder="Not Required">
+            <div style="padding-top: 10px;">
+                <button type="button" class="myBtn" id="btn_add_A0CE92C0EC52">Add</button>
+                <button type="button" class="myBtn" id="btn_search_EA761612CD6D">Search</button>
+            </div>
+            <div id="result_div_DB32541AAB9B"></div>
+        </div>
+        <div id="div_DB325LO9AB9B" style="display: none;">
+            <label style="font-weight: 600; font-size: 15px;">Settings</label>
+            <input placeholder="Database API Key" id="dbKey_input_9D4E63POX11C" style="width: 100%; margin-top: 10px;" />
+            <input placeholder="Database Url" id="dbUrl_input_9D4E69BNX11C" style="width: 100%; margin-top: 10px;" />
+            <div style="padding-top: 10px;">
+                <button type="button" class="myBtn" id="btn_close_APX992C0EC52">Close</button>
+                <button type="button" class="myBtn" id="btn_save_KLX01612CD6D">Save</button>
+            </div>
+        </div>
+</div>
+</body>
+</html>
+<script src='js/bookmarkKing.js'></script>
+<style>
+    .myBtn {
+        display: inline-block;
+        font-weight: 400;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        border: 1px solid transparent;
+        font-size: 1rem;
+        line-height: 1.5;
+        border-radius: .25rem;
+        transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+        color: #fff;
+        background-color: #007bff;
+        border-color: #007bff;
+        cursor: pointer;
+    }
+</style>
+
+
