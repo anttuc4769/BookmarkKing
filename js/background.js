@@ -16,14 +16,16 @@ chrome.runtime.onMessage.addListener(function (rq, sender, sendResponse) {
             chrome.cookies.set({
                 url: "https://www.vikyn.io",
                 name: "BookmarkKingDbKey",
-                value: rq.data
+                value: rq.data,
+                expirationDate: (new Date().getTime() / 1000) + GetSecondsFromDays(500)
             });
             break;
         case "sc-dbUrl":
             chrome.cookies.set({
                 url: "https://www.vikyn.io",
                 name: "BookmarkKingDbUrl",
-                value: rq.data
+                value: rq.data,
+                expirationDate: (new Date().getTime() / 1000) + GetSecondsFromDays(500)
             });
             break;
         case "dbm":
@@ -68,6 +70,10 @@ chrome.runtime.onMessage.addListener(function (rq, sender, sendResponse) {
     }
     return true;  
 });
+
+function GetSecondsFromDays(days) {
+    return days * 24 * 60 * 60;
+}
 
 function GetData(url, dbKey, sendResponse) {
     $.ajax
