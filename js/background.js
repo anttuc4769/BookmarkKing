@@ -1,14 +1,10 @@
 chrome.runtime.onMessage.addListener(function (rq, sender, sendResponse) {
     switch (rq.action) {
         case "gb":
-            $.get(rq.url, function (data) {
-                sendResponse({ response: data });
-            });
+            GetData(rq.url, rq.dbKey, sendResponse);
             break;
         case "gb-id":
-            $.get(rq.url, function (data) {
-                sendResponse({ response: data });
-            });
+            GetData(rq.url, rq.dbKey, sendResponse);
             break;
         case "kw":
             InsertTags(rq.url, rq.json, rq.dbKey, rq.bookmarkJson, rq.tagNameQuery, false);
@@ -73,6 +69,24 @@ chrome.runtime.onMessage.addListener(function (rq, sender, sendResponse) {
     return true;  
 });
 
+function GetData(url, dbKey, sendResponse) {
+    $.ajax
+    ({
+        type: "GET",
+        url: url,
+        headers: {
+            "x-apikey": dbKey
+        },
+        success: function (data) {
+            sendResponse({ response: data });
+            return true;
+        },
+        error: function () {
+            return false;
+        }
+    });
+}
+
 function DeleteBookmark(url, dbKey) {
     $.ajax
     ({
@@ -82,10 +96,10 @@ function DeleteBookmark(url, dbKey) {
             "x-apikey": dbKey
         },
         success: function () {
-            return { response: "success" };
+            return true;
         },
         error: function () {
-            return { response: "error" };
+            return false;
         }
     });
 }
@@ -104,7 +118,7 @@ function InsertTags(url, json, dbKey, bookmarkJson, tagNameQuery, update, id) {
         success: function() {
             return GetTagsByName(url, bookmarkJson, dbKey, tagNameQuery, update, id);
         },
-        error: function () { return "error"; }
+        error: function () { return false; }
     });
 }
 
@@ -180,7 +194,6 @@ function UpdateBookmark(url, json, dbKey, id) {
     });
 }
 
-
 function GetTags(url, dbKey) {
     $.ajax
     ({
@@ -189,8 +202,8 @@ function GetTags(url, dbKey) {
         headers: { "x-apikey": dbKey },
         contentType: 'application/json',
         function() {
-            return "success";
+            return true;
         },
-        error: function () { return "error"; }
+        error: function () { return false; }
     });
 }
